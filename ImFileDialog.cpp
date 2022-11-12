@@ -7,10 +7,9 @@
 #include <algorithm>
 #include <sys/stat.h>
 #define IMGUI_DEFINE_MATH_OPERATORS
-#include <imgui/imgui.h>
-#include <imgui/imgui_internal.h>
+#include <imgui.h>
+#include <imgui_internal.h>
 
-#define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
 #ifdef _WIN32
@@ -24,7 +23,7 @@
 #endif
 
 #define ICON_SIZE ImGui::GetFont()->FontSize + 3
-#define GUI_ELEMENT_SIZE std::max(GImGui->FontSize + 10.f, 24.f)
+#define GUI_ELEMENT_SIZE std::max<float>(GImGui->FontSize + 10.f, 24.f)
 #define DEFAULT_ICON_SIZE 32
 #define PI 3.141592f
 
@@ -1406,9 +1405,9 @@ namespace ifd {
 				m_finalize();
 		}
 
-		int escapeKey = ImGui::GetIO().KeyMap[ImGuiKey_Escape];
+		// int escapeKey = ImGui::GetIO().KeyMap[ImGuiKey_Escape];
 		if (ImGui::IsWindowFocused(ImGuiFocusedFlags_RootAndChildWindows) &&
-			 escapeKey >= 0 && ImGui::IsKeyPressed(escapeKey))
+			 ImGui::IsKeyPressed(ImGuiKey_Escape))
 			m_isOpen = false;
 	}
 }
